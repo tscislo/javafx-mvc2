@@ -63,5 +63,17 @@ public class MainController implements Initializable {
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         setList();
         tableView.setItems(this.personList);
+        tableView.getSelectionModel().selectedItemProperty().addListener(observable -> {
+            this.getSelected();
+        });
     }
+
+    @FXML
+    public void getSelected() {
+        if (tableView.getSelectionModel().getSelectedItem() != null) {
+            Person person = tableView.getSelectionModel().getSelectedItem();
+            System.out.println(person);
+        }
+    }
+
 }
